@@ -1,6 +1,6 @@
 from common_imports import *
 
-X, df_techniques = get_data()  # Make sure you have a function to get the data
+# X, df_techniques = get_data()  
 
 class HyperoptTuning:
 
