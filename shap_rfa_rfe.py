@@ -239,7 +239,7 @@ def build_models(X, y, algo, key):
     # print(results)
     results = get_and_record_scores(outer_predictions)
 
-    # Assuming that `results` is a dictionary
+    
     result_df = pd.DataFrame.from_dict(results, orient='index')
 
     # Define the CSV file name
