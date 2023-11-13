@@ -15,8 +15,17 @@ def return_parameter_space(algo):
     space = {}
 
     if algo == 'LR':
-        space['solver'] = hp.choice('solver', ['liblinear'])
+        # space['solver'] = hp.choice('solver', ['liblinear'])
+        # space['C'] = hp.loguniform('C', np.log(0.00001), np.log(100))
+	space['solver'] = hp.choice('solver', ['newton-cg', 'lbfgs', 'liblinear', 'sag', 'saga'])
+        space['penalty'] = hp.choice('penalty', [ 'l2'])
         space['C'] = hp.loguniform('C', np.log(0.00001), np.log(100))
+        space['fit_intercept'] = hp.choice('fit_intercept', [True, False])
+        space['intercept_scaling'] = hp.uniform('intercept_scaling', 0.1, 2.0)
+        space['l1_ratio'] = hp.uniform('l1_ratio', 0.0, 1.0)
+        space['class_weight'] = hp.choice('class_weight', [None, 'balanced'])
+      
+
     elif algo == 'SVM':
         space['kernel'] = hp.choice('kernel', ['linear', 'rbf'])
         space['gamma'] = hp.choice('gamma', ['scale', 'auto'])
